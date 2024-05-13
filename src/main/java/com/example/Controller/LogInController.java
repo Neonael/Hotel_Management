@@ -23,7 +23,7 @@ public class LogInController {
     public Text actionTarget;
     public PasswordField passwordLoginField;
 
-  // Change commit
+
     @FXML
     public void onLoginButtonClick(ActionEvent actionEvent) throws SQLException, IOException {
         String username = usernameField.getText();

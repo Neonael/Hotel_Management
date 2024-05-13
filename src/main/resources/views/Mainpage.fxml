@@ -1,19 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="560.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controller.MainpageController">
    <children>
-      <AnchorPane layoutX="-1.0" layoutY="129.0" prefHeight="431.0" prefWidth="208.0">
+      <AnchorPane layoutX="15.0" layoutY="14.0" prefHeight="510.0" prefWidth="190.0">
          <children>
-            <Button layoutX="37.0" layoutY="67.0" mnemonicParsing="false" mouseTransparent="true" prefHeight="60.0" prefWidth="135.0" text="DashBoard" />
-            <Button layoutX="37.0" layoutY="156.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="135.0" text="Available Rooms" />
-            <Button layoutX="37.0" layoutY="253.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="135.0" text="Customers" />
+            <Button fx:id="dashboardbtn" layoutX="28.0" layoutY="215.0" mnemonicParsing="false" mouseTransparent="true" prefHeight="60.0" prefWidth="135.0" text="DashBoard" />
+            <Button fx:id="AvailableRoomsbtn" layoutX="28.0" layoutY="307.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="135.0" text="Available Rooms" />
+            <Button fx:id="Customersbtn" layoutX="28.0" layoutY="404.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="135.0" text="Customers" />
+            <ImageView fitHeight="125.0" fitWidth="149.0" layoutX="33.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../ICONS/user.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="118.0" fitWidth="149.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane layoutX="207.0" layoutY="94.0" prefHeight="464.0" prefWidth="503.0" />
-   </children>
+      <AnchorPane layoutX="205.0" layoutY="20.0" prefHeight="175.0" prefWidth="497.0" visible="false">
+         <children>
+            <AnchorPane layoutX="34.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7F2EF3;">
+               <children>
+                  <Label layoutX="40.0" layoutY="141.0" text="Today's Book" textFill="#f0f3f4">
+                     <font>
+                        <Font name="Arial Unicode MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="146.0" layoutY="47.0" text="0" textFill="#f0f3f4">
+                     <font>
+                        <Font name="Arial Unicode MS" size="37.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="261.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7F2EF3;">
+               <children>
+                  <Label layoutX="25.0" layoutY="141.0" text="Todays's Income" textFill="#f0f3f4">
+                     <font>
+                        <Font name="Arial Unicode MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="146.0" layoutY="47.0" text="0" textFill="#f0f3f4">
+                     <font>
+                        <Font name="Arial Unicode MS" size="37.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="217.0" layoutY="14.0" prefHeight="530.0" prefWidth="486.0" visible="false">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="45.0" prefHeight="276.0" prefWidth="208.0" visible="false">
+               <children>
+                  <Label layoutX="13.0" layoutY="24.0" prefHeight="17.0" prefWidth="51.0" text="Room #">
+                     <font>
+                        <Font name="Arial Unicode MS" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="availablerooms_roomNumber" layoutX="74.0" layoutY="20.0" prefHeight="25.0" prefWidth="125.0" />
+                  <ComboBox fx:id="availablerooms_roomType" layoutX="72.0" layoutY="59.0" prefHeight="25.0" prefWidth="125.0" />
+                  <ComboBox fx:id="availablerooms_status" layoutX="73.0" layoutY="101.0" prefHeight="25.0" prefWidth="125.0" />
+                  <Label layoutX="6.0" layoutY="63.0" text="Room Type">
+                     <font>
+                        <Font name="Arial Unicode MS" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="22.0" layoutY="105.0" text="Status">
+                     <font>
+                        <Font name="Arial Unicode MS" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="22.0" layoutY="144.0" prefHeight="17.0" prefWidth="51.0" text="Price">
+                     <font>
+                        <Font name="Arial Unicode MS" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="availablerooms_addbutton" layoutX="72.0" layoutY="140.0" prefHeight="25.0" prefWidth="125.0" />
+                  <Button layoutX="73.0" layoutY="199.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="63.0" text="Add" />
+                  <Button fx:id="availablerooms_checkinbutton" layoutX="48.0" layoutY="295.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="113.0" text="Check In" />
+                  <AnchorPane layoutX="-311.0" layoutY="-47.0" prefHeight="450.0" prefWidth="305.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="254.0" layoutY="85.0" prefHeight="560.0" prefWidth="753.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="Availablerooms_form" layoutX="191.0" layoutY="30.0" prefHeight="515.0" prefWidth="562.0" visible="false">
+               <children>
+                  <TableView layoutX="14.0" layoutY="46.0" prefHeight="457.0" prefWidth="537.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Customer #" />
+                      <TableColumn prefWidth="75.0" text="Firstname" />
+                        <TableColumn prefWidth="75.0" text="Lastname" />
+                        <TableColumn prefWidth="75.0" text="Phone #" />
+                        <TableColumn prefWidth="98.0" text="Total Payment" />
+                        <TableColumn prefWidth="62.0" text="Check-in" />
+                        <TableColumn prefWidth="71.0" text="Check-Out" />
+                    </columns>
+                  </TableView>
+                  <TextField layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="208.0" promptText="Search" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="204.0" layoutY="7.0" prefHeight="208.0" prefWidth="537.0" visible="false">
+               <children>
+                  <AnchorPane layoutX="40.0" layoutY="4.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="30.0" layoutY="140.0" text="Todays Book">
+                           <font>
+                              <Font name="Arial Unicode MS" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dashboard_book" layoutX="132.0" layoutY="57.0" text="0">
+                           <font>
+                              <Font name="Arial Unicode MS" size="41.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="297.0" layoutY="4.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="23.0" layoutY="145.0" text="Today's Income">
+                           <font>
+                              <Font name="Arial Unicode MS" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dashboard_income" layoutX="132.0" layoutY="57.0" text="0">
+                           <font>
+                              <Font name="Arial Unicode MS" size="41.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="442.0" layoutY="30.0" prefHeight="530.0" prefWidth="305.0" visible="false">
+               <children>
+                  <TableView layoutX="8.0" layoutY="51.0" prefHeight="429.0" prefWidth="289.0">
+                    <columns>
+                      <TableColumn fx:id="availablerooms_col_roomNumber" prefWidth="75.0" text="Room #" />
+                      <TableColumn fx:id="availablerooms_col_roomtype" prefWidth="75.0" text="RoomType" />
+                        <TableColumn fx:id="availablerooms_col_status" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="availablerooms_col_price" prefWidth="75.0" text="Price" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="availablerooms_col_search" layoutX="14.0" layoutY="8.0" promptText="Search" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="346.0" layoutY="69.0" prefHeight="560.0" prefWidth="754.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="customer_form" layoutX="188.0" layoutY="37.0" prefHeight="515.0" prefWidth="553.0" visible="false">
+               <children>
+                  <TableView layoutX="8.0" layoutY="44.0" prefHeight="450.0" prefWidth="537.0">
+                    <columns>
+                      <TableColumn fx:id="customers_customernumber" prefWidth="75.0" text="Customer #" />
+                      <TableColumn fx:id="customers_customerfirstname" prefWidth="75.0" text="Firstname" />
+                        <TableColumn fx:id="customers_customerlastname" prefWidth="75.0" text="Lastname" />
+                        <TableColumn fx:id="customers_customerphonenumber" prefWidth="75.0" text="Phone #" />
+                        <TableColumn fx:id="customers_customerTotalpayment" prefWidth="96.0" text="Total Payment" />
+                        <TableColumn fx:id="customers_customerCheckIn" prefWidth="54.0" text="Check-In" />
+                        <TableColumn fx:id="customers_customerCheckOut" prefWidth="75.0" text="Check-Out" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="28.0" layoutY="14.0" />
+                  <TextField fx:id="customers_search" layoutX="14.0" layoutY="10.0" promptText="Search" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children> 
 </AnchorPane>
