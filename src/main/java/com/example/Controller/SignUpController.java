@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -42,12 +43,21 @@ public class SignUpController {
                 preparedStatement.setString(1, accountName);
                 preparedStatement.setString(2, password);
 
+                Alert alert;
                 // Execute the query
                 int rows = preparedStatement.executeUpdate();
                 if (rows > 0) {
-                    System.out.println("Account created successfully.");
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Account Created Successfully!");
+                    alert.showAndWait();
                 } else {
-                    System.out.println("Failed to insert user account.");
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Failed to create account!");
+                    alert.showAndWait();
                 }
             }
         } catch (SQLException e) {

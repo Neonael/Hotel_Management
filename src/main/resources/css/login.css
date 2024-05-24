@@ -1,0 +1,65 @@
+             #loginButton{
+            -fx-background-color: #ffffff;
+            -fx-cursor:hand;
+            -fx-background-radius:20px;
+
+            }
+
+
+
+            #loginButton:hover {
+             -fx- box-shadow: 0 0 #333;
+             -fx-color: #050404;
+             -fx-background-color:#333;
+
+            }
+
+            #signbutton{
+
+
+              -fx-background-color: #ffffff;
+               -fx-cursor:hand;
+              -fx-background-radius:20px;
+
+            }
+
+
+
+              #signbutton:hover {
+             -fx- box-shadow: 0 0 #333;
+              -fx-color: #050404;
+              -fx-background-color:#333;
+
+             
+
+
+
+            }
+
+
+            #create{
+             -fx-background-color: #ffffff;
+             -fx-cursor:hand;
+             -fx-background-radius:20px;
+
+
+            }
+                 #create:hover {
+                   -fx- box-shadow: 0 0 #333;
+                   -fx-color: #050404;
+                   -fx-background-color:#333;
+
+                 }
+
+
+                 #logout{
+                 -fx-background-color: #ffffff;
+                   -fx-cursor:hand;
+                    -fx-background-radius:20px;
+                 }
+                   #logout:hover {
+                     -fx- box-shadow: 0 0 #333;
+                      -fx-color: #050404;
+                       -fx-background-color:#333;
+
+                   }

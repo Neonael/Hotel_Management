@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -29,13 +30,26 @@ public class LogInController {
         String username = usernameField.getText();
         String password = passwordLoginField.getText();
         Login hotel = new Login(username, password);
-
+        Alert alert;
         login logiclogin = new login();
         if (logiclogin.loginQuery(hotel)) {
+
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Successfully Created");
+            alert.showAndWait();
+
+
             // Open the main form if login is successful
             openMainForm();
         }else {
-            System.err.println("ACCOUNT DOES EXIST!");
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR Message");
+            alert.setHeaderText(null);
+            alert.setContentText(" Account Does Exist!");
+            alert.showAndWait();
 
         }
     }

@@ -4,9 +4,9 @@ public class RoomData {
     private int roomNumber;
     private String room_type;
     private  String status;
-    public Double price;
+    public int price;
 
-    public RoomData(int roomNumber, String room_type, String status, Double price) {
+    public RoomData(int roomNumber, String room_type, String status, int price) {
         this.roomNumber = roomNumber;
         this.room_type = room_type;
         this.status = status;
@@ -22,14 +22,18 @@ public class RoomData {
         return room_type;
     }
 
-    public String getStatus() {
+
+    public String getStatus(){
         return status;
+    }
 
-
-
+        
+   public int getPrice() {
+       return price;
+   }
 
 
 
     }
-}
+
 

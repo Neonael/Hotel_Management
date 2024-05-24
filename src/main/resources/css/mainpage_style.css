@@ -1,0 +1,187 @@
+#but_dashboard{
+-fx-background-color: #F7F9F9;
+-fx-cursor:hand;
+-fx-background-radius:20px;
+-fx- background-color: #ffffff;
+}
+
+#but_dashboard:hover {
+ -fx- box-shadow: 0 0 #333;
+ -fx-color: #050404;
+  -fx-background-color:#333;
+
+}
+
+
+#but_avail{
+-fx-background-color: #F7F9F9;
+-fx-cursor:hand;
+-fx-background-radius:20px;
+
+}
+
+
+
+#but_avail:hover {
+ -fx- box-shadow: 0 0 #333;
+ -fx-color: #050404;
+  -fx-background-color:#333;
+
+}
+
+#but_customer{
+-fx-background-color: #F7F9F9;
+-fx-cursor:hand;
+-fx-background-radius:20px;
+
+}
+#but_customer:hover {
+ -fx- box-shadow: 0 0 #333;
+ -fx-color: #050404;
+  -fx-background-color:#333;
+
+}
+
+
+
+#toppane{
+-fx-background-color: #fff;
+-fx-background-radius:10px;
+
+}
+
+#dashboard_botform{
+
+-fx-background-color: #fff;
+-fx-background-radius:10px;
+
+}
+
+
+#top1pane,#top2pane{
+-fx-background-radius:20px;
+-fx- box-shadow: 0 0 #333;
+
+
+
+}
+
+/*Available Rooms*/
+
+
+
+#avail_leftform{
+-fx-background-color: #fff;
+-fx-background-radius:10px;
+
+
+}
+
+#avail_rightpane{
+-fx-background-color: #fff;
+-fx-background-radius:10px;
+
+}
+
+/*buttonavailablerooms */
+
+
+#avail_addbut{
+
+-fx-background-color: #ffffff;
+-fx-cursor:hand;
+-fx-background-radius:20px;
+
+}
+
+
+#avail_addbut:hover {
+-fx- box-shadow: 0 0 #333;
+ -fx-color: #050404;
+ -fx-background-color:#333;
+}
+
+#avail_deletebut{
+
+-fx-background-color: #ffffff;
+-fx-cursor:hand;
+-fx-background-radius:20px;
+
+}
+
+#avail_deletebut:hover {
+-fx- box-shadow: 0 0 #333;
+ -fx-color: #050404;
+ -fx-background-color:#333;
+}
+
+
+
+
+#avail_clearbut{
+
+-fx-background-color: #ffffff;
+-fx-cursor:hand;
+-fx-background-radius:20px;
+
+}
+
+#avail_clearbut:hover {
+-fx- box-shadow: 0 0 #333;
+ -fx-color: #050404;
+ -fx-background-color:#333;
+}
+
+
+
+
+
+#avail_updatebut{
+fx-background-color: #ffffff;
+-fx-cursor:hand;
+-fx-background-radius:20px;
+
+}
+#avail_updatebut:hover {
+-fx- box-shadow: 0 0 #333;
+ -fx-color: #050404;
+ -fx-background-color:#333;
+}
+
+
+#avail_checkinbut{
+fx-background-color: #ffffff
+-fx-cursor:hand;
+-fx-background-radius:20px;
+}
+
+
+#avail_checkinbut:hover {
+-fx- box-shadow: 0 0 #333;
+ -fx-color: #050404;
+ -fx-background-color:#333;
+}
+
+
+
+#customer_form{
+-fx-background-color: #fff;
+-fx-background-radius:10px;
+
+}
+
+
+
+/*textfield*/
+
+
+
+
+
+
+
+
+
+
+
+
