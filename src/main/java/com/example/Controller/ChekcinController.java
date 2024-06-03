@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+
+
 public class ChekcinController implements Initializable {
     public TextField firstname;
     public TextField lastname;
@@ -20,8 +22,8 @@ public class ChekcinController implements Initializable {
     public TextField emailaddress;
     public DatePicker Checkin_Date;
     public DatePicker CheckOut_Date;
-    public Button ResetButton;
-    public Button ReceiptButton;
+
+
     public Button CheckInButton;
     public Label CustomerNumber;
     public ComboBox roomType_combo_checkin;
@@ -42,8 +44,8 @@ public class ChekcinController implements Initializable {
     public void Customercheckin() {
 
 
-        String CheckIN = "INSERT INTO CUSTOMERS (customer_id,roomType,roomNumber,firstname,lastname,phoneNumber,email,checkIn,checkOut) " +
-                "VALUES(?,?,?,?,?,?,?,TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'))";
+        String CheckIN = "INSERT INTO CUSTOMERS (customer_ID,roomType,roomNumber,firstname,lastname,phoneNumber,email,checkIn,checkOut) " +
+                "VALUES(?,?,?,?,?,?,? , TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'))";
 
         connect = dbConnector.getConnection();
      try {
@@ -51,15 +53,14 @@ public class ChekcinController implements Initializable {
          String type = (String) roomType_combo_checkin.getSelectionModel().getSelectedItem();
          String number = (String) roomNumber_combo_checkin.getSelectionModel().getSelectedItem();
          String firstN = firstname.getText();
-         String lastN = lastname.getText();
+         String Lastname = lastname.getText();
          String PNumber = phonenumber.getText();
          String mail = emailaddress.getText();
          String checkInDate = String.valueOf(Checkin_Date.getValue());
          String checkOutDate = String.valueOf(CheckOut_Date.getValue());
-         Alert alert;
 
          // Check if there is empty field
-         if (customerNum == null || firstname == null || lastname == null || phonenumber == null ||
+         if (customerNum == null|| firstname == null || lastname == null || phonenumber == null ||
                  emailaddress == null || Checkin_Date == null || CheckOut_Date  == null) {
 
              Alert alert1 = new Alert(Alert.AlertType.ERROR);
@@ -69,7 +70,7 @@ public class ChekcinController implements Initializable {
              alert1.showAndWait();
 
 
-         } else {
+         } else{
 
              Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
              alert1.setTitle("CONFIRMATION Message");
@@ -87,7 +88,7 @@ public class ChekcinController implements Initializable {
              prepare.setString(2, type);
              prepare.setString(3, number);
              prepare.setString(4, firstN);
-             prepare.setString(5, lastN);
+             prepare.setString(5, Lastname);
              prepare.setString(6, PNumber);
              prepare.setString(7, mail);
              prepare.setString(8, checkInDate);
@@ -140,7 +141,7 @@ public class ChekcinController implements Initializable {
             resultSet = prepare.executeQuery();
             while (resultSet.next()){
 
-                listData.add(resultSet.getString("room_type"));
+                listData.add(resultSet.getString("roomType"));
 
             }
                 roomType_combo_checkin.setItems(listData);

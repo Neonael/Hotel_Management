@@ -9,7 +9,7 @@ public class dbConnector {
     /** The username used to connect to the database. */
     public static final String username = "system";
     /** The password used to connect to the database. */
-    public static final String password = "Neonael2004";
+    public static final String password = "godisgood";
 
     public static Connection getConnection() {
         try {

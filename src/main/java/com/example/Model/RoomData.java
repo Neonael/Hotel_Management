@@ -2,13 +2,13 @@ package com.example.Model;
 
 public class RoomData {
     private int roomNumber;
-    private String room_type;
+    private String roomType;
     private  String status;
     public int price;
 
-    public RoomData(int roomNumber, String room_type, String status, int price) {
+    public RoomData(int roomNumber, String roomType, String status, int price) {
         this.roomNumber = roomNumber;
-        this.room_type = room_type;
+        this.roomType = roomType;
         this.status = status;
         this. price = price;
 
@@ -19,7 +19,7 @@ public class RoomData {
     }
 
     public String getRoom_type() {
-        return room_type;
+        return roomType;
     }
 
 

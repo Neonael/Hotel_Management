@@ -85,7 +85,7 @@ public class MainpageController implements Initializable {
 
         connection = dbConnector.getConnection();
 
-        String sql = "INSERT INTO Available_room(roomNumber,room_Type,status,price) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Available_room(roomNumber,roomType,status,price) VALUES (?,?,?,?)";
 
         try {
 
@@ -96,7 +96,7 @@ public class MainpageController implements Initializable {
 
             Alert alert;
 
-            if (roomNumber == null || type== null|| status== null  || price.isEmpty()) {
+            if (roomNumber == null  || type== null|| status== null  || price.isEmpty()) {
 
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
@@ -161,8 +161,7 @@ public class MainpageController implements Initializable {
 
     }
 
-
-    ////////////////////////// LIST IT WHAT ON THE COMBO BOX
+     ////// LIST IT WHAT ON THE COMBO BOX
     public ObservableList<RoomData> AvailableRoomListData() {
 
         ObservableList<RoomData> listdata = FXCollections.observableArrayList();
@@ -182,7 +181,7 @@ public class MainpageController implements Initializable {
                 roomD = new RoomData(
 
                         resultSet.getInt("roomNumber"),
-                        resultSet.getString("room_type"),
+                        resultSet.getString("roomType"),
                         resultSet.getString("status"),
                         resultSet.getInt("price")
                 );
@@ -209,7 +208,7 @@ public class MainpageController implements Initializable {
 
 
 
-    /////////////////// DELETE BUTTON ON AVAILABLE ROOMS
+    //////////////// DELETE BUTTON ON AVAILABLE ROOMS
 
     public void AvailableroomDelete(){
 
@@ -218,7 +217,7 @@ public class MainpageController implements Initializable {
         String status = (String) availroomstatus_droptext.getSelectionModel().getSelectedItem();
         String price = availprice_textfield.getText();
 
-             String deletedata = "DELETE FROM Available_room WHERE roomNUmber = '"+roomNumber +"'";
+             String deletedata = "DELETE FROM Available_room WHERE roomNumber = '"+roomNumber +"'";
 
              connection = dbConnector.getConnection();
 
@@ -293,8 +292,8 @@ public class MainpageController implements Initializable {
 
     public void availbaleRoomRoomtype() {
 
-        List<String> listdata = new ArrayList<>();
 
+        List<String> listdata = new ArrayList<>();
         for (String data : roomtype) {
             listdata.add(data);
         }
@@ -307,8 +306,6 @@ public class MainpageController implements Initializable {
 // DISPLAY THE STATUS ON COMBO BOX
     private String Status[]
             = {"Available", "Not Available", "Occupied"};
-
-
 
     public void availableRoomStatus() {
 
@@ -329,7 +326,7 @@ public class MainpageController implements Initializable {
     public  ObservableList <customersdata> customerListData(){
         ObservableList<customersdata>listData = FXCollections.observableArrayList();
 
-        String sql = "SELECT customer_id, firstname, lastname, phoneNumber, CheckIn, CheckOut FROM Customers ";
+        String sql = "SELECT customer_ID, firstname, lastname, phoneNumber, checkIn, checkOut FROM Customers ";
 
         connection = dbConnector.getConnection();
 
