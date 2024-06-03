@@ -12,9 +12,9 @@
 
 <AnchorPane prefHeight="610.0" prefWidth="465.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controller.ChekcinController">
    <children>
-      <AnchorPane fx:id="CheckinForm" layoutX="6.0" layoutY="7.0" prefHeight="596.0" prefWidth="455.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="7.0">
+      <AnchorPane fx:id="CheckinForm" layoutX="5.0" layoutY="7.0" prefHeight="596.0" prefWidth="455.0" style="-fx-background-color: e1cb07;" stylesheets="@../css/mainpage_style.css" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="7.0">
          <children>
-            <Label layoutX="83.0" layoutY="30.0" prefHeight="32.0" prefWidth="110.0" text="Check-In">
+            <Label layoutX="83.0" layoutY="22.0" prefHeight="40.0" prefWidth="138.0" text="Check-In">
                <font>
                   <Font name="Berlin Sans FB" size="29.0" />
                </font>
@@ -68,29 +68,7 @@
                   <Font name="Arial" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="ResetButton" layoutX="44.0" layoutY="492.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Reset" />
-            <Button fx:id="ReceiptButton" layoutX="137.0" layoutY="492.0" mnemonicParsing="false" text="Receipt" />
-            <Button fx:id="CheckInButton" layoutX="94.0" layoutY="535.0" mnemonicParsing="false" onAction="#Customercheckin" text="Check-In" />
-            <Label layoutX="233.0" layoutY="500.0" text="Total Days:">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="totalDays" layoutX="355.0" layoutY="496.0" text="===">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="31.0" />
-               </font>
-            </Label>
-            <Label layoutX="262.0" layoutY="531.0" text="Total:">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label fx:id="displayTotal" layoutX="326.0" layoutY="526.0" text="0.0">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="31.0" />
-               </font>
-            </Label>
+            <Button fx:id="CheckInButton" layoutX="138.0" layoutY="472.0" mnemonicParsing="false" onAction="#Customercheckin" prefHeight="52.0" prefWidth="157.0" text="Check-In" />
             <Label layoutX="245.0" layoutY="364.0" prefHeight="21.0" prefWidth="102.0" text="Check- Out">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="14.0" />
@@ -103,7 +81,7 @@
             </Label>
             <DatePicker fx:id="Checkin_Date" layoutX="44.0" layoutY="402.0" prefHeight="25.0" prefWidth="149.0" />
             <DatePicker fx:id="CheckOut_Date" layoutX="250.0" layoutY="402.0" prefHeight="25.0" prefWidth="149.0" />
-            <ComboBox fx:id="roomNumber_combo_checkin" layoutX="44.0" layoutY="314.0" onAction="#roomTypeList" prefWidth="150.0" promptText="Choose" />
+            <ComboBox fx:id="roomNumber_combo_checkin" layoutX="44.0" layoutY="314.0" onAction="#roomNumberList" prefWidth="150.0" promptText="Choose" />
             <ComboBox fx:id="roomType_combo_checkin" layoutX="243.0" layoutY="314.0" onAction="#roomTypeList" prefWidth="150.0" promptText="Choose" />
          </children>
       </AnchorPane>

@@ -1,17 +1,18 @@
 package com.example.Controller;
 
 import com.example.Model.RoomData;
+import com.example.Model.customersdata;
 import com.example.Utilities.dbConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,18 +21,45 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainpageController implements Initializable {
+
+
+   public AnchorPane customer_form;
+    public AnchorPane availablerooms_form;
+    public AnchorPane dashboard_form;
 
 
     public TextField availroomnum_textfield;
     public TextField availprice_textfield;
     public ComboBox availroomtype_droptext;
     public ComboBox availroomstatus_droptext;
+
+
+
+    public Button but_avail;
+
+
+    public Button but_customer;
+
+
+    public Button but_dashboard;
+
+
+    public TableView<customersdata> customer_tableview;
+
+
+    public TableColumn<customersdata, Integer> customernum_col;
+
+    public TableColumn<customersdata, String> firstname_col;
+
+    public TableColumn<customersdata, String> lastname_col;
+
+    public TableColumn<customersdata, String> phonenum_col;
+    public TableColumn<customersdata, Date> checkin_col;
+
+    public TableColumn<customersdata, Date> checkout_col;
 
 
     public TableView <RoomData> available_tableview;
@@ -42,11 +70,6 @@ public class MainpageController implements Initializable {
     public TableColumn<RoomData,String> avail_roomtype_col;
     public TableColumn <RoomData,String>avail_roomstatus_col;
     public TableColumn <RoomData,String> avail_roomprice_col;
-    @FXML
-    public Label total;
-
-    @FXML
-    public Label totalDays;
 
 
 
@@ -56,6 +79,8 @@ public class MainpageController implements Initializable {
     private ResultSet resultSet;
 
 
+
+    //THIS WILL HANDLE THE INSERTION OF VALUE ON AVAIALBE FORM
     public void AvaillabelroomsAdd() {
 
         connection = dbConnector.getConnection();
@@ -137,12 +162,12 @@ public class MainpageController implements Initializable {
     }
 
 
-    ////////////////////////// LIST IT ON TEXT BOX
+    ////////////////////////// LIST IT WHAT ON THE COMBO BOX
     public ObservableList<RoomData> AvailableRoomListData() {
 
         ObservableList<RoomData> listdata = FXCollections.observableArrayList();
 
-        String sql = ("SELECT * FROM AVAILABLE_ROOM");
+        String sql = "SELECT * FROM AVAILABLE_ROOM";
 
         connection = dbConnector.getConnection();
 
@@ -247,7 +272,7 @@ public class MainpageController implements Initializable {
     }
 
 
-
+   //SHOW THE CHECKIN FORM
      public void AvaialbleRoomCheckIn(ActionEvent actionEvent) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Chekcin.fxml"));
          Parent root = loader.load();
@@ -279,6 +304,7 @@ public class MainpageController implements Initializable {
 
     }
 
+// DISPLAY THE STATUS ON COMBO BOX
     private String Status[]
             = {"Available", "Not Available", "Occupied"};
 
@@ -298,6 +324,79 @@ public class MainpageController implements Initializable {
     }
 
 
+
+            //THIS WILL SHOW THE IMPORTANT DETAILS THAT I SELECT ON THE DATABASE
+    public  ObservableList <customersdata> customerListData(){
+        ObservableList<customersdata>listData = FXCollections.observableArrayList();
+
+        String sql = "SELECT customer_id, firstname, lastname, phoneNumber, CheckIn, CheckOut FROM Customers ";
+
+        connection = dbConnector.getConnection();
+
+        try{
+
+            prepare = connection.prepareStatement(sql);
+            resultSet = prepare.executeQuery();
+
+            customersdata custD;
+
+            while (resultSet.next()){
+                custD = new customersdata(resultSet.getInt("customer_ID")
+                        , resultSet.getString("firstname")
+                        , resultSet.getString("lastname")
+                        ,resultSet.getString("phoneNumber")
+                        ,resultSet.getDate("checkIn")
+                        , resultSet.getDate("checkOut"));
+
+                listData.add(custD);
+            }
+
+
+
+        }catch (Exception e){e.printStackTrace();}
+
+        return listData;
+    }
+
+    private ObservableList<customersdata> ListCustomerData;
+    public void customerShowData(){
+        ListCustomerData = customerListData();
+        customer_tableview.setItems(ListCustomerData);
+
+    }
+
+    // The SWITCHFORM MENTHOD IS PUT ON ACTION EVENT ON EVERY BUTTONS
+    public void switchForm(ActionEvent event){
+        if(event.getSource() == but_dashboard){
+            //dashboard FORM WILL SHOW
+
+            dashboard_form.setVisible(true);
+            availablerooms_form.setVisible(false);
+            customer_form.setVisible(false);
+
+            //availablerooms FORM WILL SHOW
+        }else if(event.getSource() == but_avail){
+            dashboard_form.setVisible(false);
+            availablerooms_form.setVisible(true);
+            customer_form.setVisible(false);
+
+            //customers FORM WILL SHOW
+        }else if(event.getSource() == but_customer){
+            dashboard_form.setVisible(false);
+            availablerooms_form.setVisible(false);
+            customer_form.setVisible(true);
+            // TO UPDATE THE CUSTOMERS TABLE WHEN INPUTED!
+            customerShowData();
+
+
+        }
+
+
+    }
+
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         availbaleRoomRoomtype();
@@ -310,6 +409,17 @@ public class MainpageController implements Initializable {
         avail_roomprice_col.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         availableRoomsShowData();
+
+
+        customernum_col.setCellValueFactory(new PropertyValueFactory<>("CustomerNum"));
+        firstname_col.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+        lastname_col.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        phonenum_col.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
+        checkin_col.setCellValueFactory(new PropertyValueFactory<>("CheckIn"));
+        checkout_col.setCellValueFactory(new PropertyValueFactory<>("CheckOut"));
+
+        customerShowData();
+
 
     }
 }

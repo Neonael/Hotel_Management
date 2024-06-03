@@ -1,6 +1,5 @@
 package com.example.Controller;
 
-import com.example.Model.CustomerNumberData;
 import com.example.Utilities.dbConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,18 +26,24 @@ public class ChekcinController implements Initializable {
     public Label CustomerNumber;
     public ComboBox roomType_combo_checkin;
     public ComboBox roomNumber_combo_checkin;
-    public Label TotalDays;
+
+     public Label dashboard_todaysbooking;
+
+
+
+
 
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet resultSet;
 
 
-
+    //INSERT WHAT USER INPUTS ON THE CUSTOMERS TABLE
     public void Customercheckin() {
 
+
         String CheckIN = "INSERT INTO CUSTOMERS (customer_id,roomType,roomNumber,firstname,lastname,phoneNumber,email,checkIn,checkOut) " +
-                "VALUES(?,?,?,?,?,?,?,?,?)";
+                "VALUES(?,?,?,?,?,?,?,TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'))";
 
         connect = dbConnector.getConnection();
      try {
@@ -52,14 +57,17 @@ public class ChekcinController implements Initializable {
          String checkInDate = String.valueOf(Checkin_Date.getValue());
          String checkOutDate = String.valueOf(CheckOut_Date.getValue());
          Alert alert;
+
          // Check if there is empty field
-         if (customerNum == null || firstname == null || lastname == null || phonenumber == null || emailaddress == null
-                 || Checkin_Date == null || CheckOut_Date == null) {
+         if (customerNum == null || firstname == null || lastname == null || phonenumber == null ||
+                 emailaddress == null || Checkin_Date == null || CheckOut_Date  == null) {
+
              Alert alert1 = new Alert(Alert.AlertType.ERROR);
              alert1.setTitle("Error Message");
              alert1.setHeaderText(null);
-             alert1.setContentText("Complete the details!" + "Thanks!");
+             alert1.setContentText("Complete the Details!");
              alert1.showAndWait();
+
 
          } else {
 
@@ -67,17 +75,14 @@ public class ChekcinController implements Initializable {
              alert1.setTitle("CONFIRMATION Message");
              alert1.setHeaderText(null);
              alert1.setContentText("Are you sure?");
-             alert1.showAndWait();
+
+             // DISPLAYS THE PROMPT WITH A BUTTON OK
              Optional<ButtonType>option = alert1.showAndWait();
 
              if(option.get().equals(ButtonType.OK)){
 
-
-             }else{return;}
-
-
              prepare = connect.prepareStatement(CheckIN);
-
+             // INSERT IT
              prepare.setString(1, customerNum);
              prepare.setString(2, type);
              prepare.setString(3, number);
@@ -90,6 +95,13 @@ public class ChekcinController implements Initializable {
 
              prepare.executeUpdate();
 
+        //////////// UPDATES THE STATUS INTO OCCUPIED IF ITS ALREADY TAKEN
+             String sqlEditStatus = "UPDATE Available_room SET status = 'Occupied' WHERE roomNumber = '" + number +"'";
+             PreparedStatement prepare = connect.prepareStatement(sqlEditStatus);
+             prepare.executeUpdate(sqlEditStatus);
+
+
+
              Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
              alert2.setTitle("INFORMATION Message");
              alert2.setHeaderText(null);
@@ -97,6 +109,10 @@ public class ChekcinController implements Initializable {
              alert2.showAndWait();
 
 
+
+
+         }else{return;
+             }
 
          }
      }catch(Exception e ){
@@ -107,67 +123,19 @@ public class ChekcinController implements Initializable {
 
 
 
-    public void totalDays(){
-        if (CheckOut_Date.getValue().compareTo(Checkin_Date.getValue()) < 0 ){
-            Alert alert;
-            Alert alert1 = new Alert(Alert.AlertType.ERROR);
-            alert1.setTitle("Error Message");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Invalid Check-Out Date!");
-            alert1.showAndWait();
-
-
-        }else {
-         CustomerNumberData.Totaldays = CheckOut_Date.getValue().compareTo(Checkin_Date.getValue());
-         //
-        }
-    }
-
-    public void displayTotal(){
-
-        String totalID = String.valueOf(CustomerNumberData.Totaldays);
-        TotalDays.setText(totalID);
-    }
 
 
 
 
-    public void CustomerNumber() {
-
-        String customerNum = "SELECT customer_id FROM CUSTOMERS";
-
-        connect = dbConnector.getConnection();
-
-       try {
-           prepare = connect.prepareStatement(customerNum);
-
-           while (resultSet.next()){
-               CustomerNumberData.customerNum = resultSet.getInt("customer_id");
-           }
-
-
-       }catch (Exception e ){e.printStackTrace();}
-    }
-
-
-    public void displayCustomerNumber(){
-        CustomerNumber();
-        CustomerNumber.setText(String.valueOf( CustomerNumberData.customerNum + 1));
-
-    }
-
-
-
-
-
+           // ITS ON THE COMBO BOX ON COMBO BOX IT WILL ONLY SHOW THE STATUS THAT IS  AVAILABLE!!
 
     public void roomTypeList(){
-        String listType = "SELECT * FROM Available_rooms WHERE status = 'Available'";
+        String listType = "SELECT * FROM Available_room WHERE status = 'Available'";
         connect = dbConnector.getConnection();
 
         try{
 
-            ObservableList listData = FXCollections.observableArrayList(listType);
+            ObservableList listData = FXCollections.observableArrayList();
             prepare = connect.prepareStatement(listType);
             resultSet = prepare.executeQuery();
             while (resultSet.next()){
@@ -185,7 +153,28 @@ public class ChekcinController implements Initializable {
 
     }
 
+   //  // ITS ON THE COMBO BOX ON COMBO BOX IT WILL ONLY SHOW THE roomNUMBER THAT IS  AVAILABLE!!
+    public void roomNumberList(){
+        String listType = "SELECT * FROM Available_room WHERE status = 'Available'";
+        connect = dbConnector.getConnection();
 
+        try{
+
+            ObservableList listData = FXCollections.observableArrayList();
+            prepare = connect.prepareStatement(listType);
+            resultSet = prepare.executeQuery();
+            while (resultSet.next()){
+
+                listData.add(resultSet.getString("roomNumber"));
+
+            }
+            roomNumber_combo_checkin.setItems(listData);
+
+
+        }catch (Exception e){e.printStackTrace();};
+
+
+    }
 
 
 
@@ -194,8 +183,9 @@ public class ChekcinController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        displayCustomerNumber();
         roomTypeList();
+        roomNumberList();
+
 
 
     }

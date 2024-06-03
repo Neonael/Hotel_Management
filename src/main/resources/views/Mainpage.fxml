@@ -47,10 +47,10 @@
                                     </Label>
                                     <Label fx:id="homepage_user" alignment="CENTER" layoutX="1.0" layoutY="166.0" prefHeight="32.0" prefWidth="198.0" text="User">
                                        <font>
-                                          <Font name="System Bold" size="22.0" />
+                                          <Font name="Berlin Sans FB Demi Bold" size="22.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="but_dashboard" layoutX="26.0" layoutY="240.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="151.0" stylesheets="@../css/mainpage_style.css" text="Dashboard">
+                                    <Button fx:id="but_dashboard" layoutX="26.0" layoutY="240.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="151.0" stylesheets="@../css/mainpage_style.css" text="Dashboard">
                                        <font>
                                           <Font name="Arial" size="15.0" />
                                        </font>
@@ -58,12 +58,12 @@
                                           <ColorAdjust />
                                        </effect></Button>
                                     <Line endX="81.0" layoutX="96.0" layoutY="214.0" startX="-74.0" />
-                                    <Button fx:id="but_avail" layoutX="24.0" layoutY="318.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="151.0" stylesheets="@../css/mainpage_style.css" text="Available Rooms">
+                                    <Button fx:id="but_avail" layoutX="24.0" layoutY="318.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="151.0" stylesheets="@../css/mainpage_style.css" text="Available Rooms">
                                        <font>
                                           <Font name="Arial" size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="but_customer" layoutX="26.0" layoutY="393.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="151.0" stylesheets="@../css/mainpage_style.css" text="Customers">
+                                    <Button fx:id="but_customer" layoutX="26.0" layoutY="393.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="45.0" prefWidth="151.0" stylesheets="@../css/mainpage_style.css" text="Customers">
                                        <font>
                                           <Font name="Arial" size="15.0" />
                                        </font>
@@ -80,39 +80,21 @@
                                  <children>
                                     <AnchorPane fx:id="toppane" layoutX="13.0" layoutY="31.0" prefHeight="124.0" prefWidth="533.0" stylesheets="@../css/mainpage_style.css">
                                        <children>
-                                          <AnchorPane fx:id="top1pane" layoutX="28.0" layoutY="13.0" prefHeight="101.0" prefWidth="200.0" style="-fx-background-color: #5F0BD1;">
+                                          <AnchorPane fx:id="top1pane" layoutX="76.0" layoutY="12.0" prefHeight="101.0" prefWidth="349.0" style="-fx-background-color: e1cb07;">
                                              <children>
-                                                <ImageView fitHeight="51.0" fitWidth="54.0" layoutX="21.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="71.0" fitWidth="63.0" layoutX="21.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@../../../../../../Users/ADMIN/Downloads/check.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Label layoutX="72.0" layoutY="60.0" prefHeight="24.0" prefWidth="130.0" text="Today's Booking" textFill="WHITE">
+                                                <Label layoutX="94.0" layoutY="50.0" prefHeight="42.0" prefWidth="194.0" text="Today's Booking">
                                                    <font>
-                                                      <Font name="Arial Rounded MT Bold" size="15.0" />
+                                                      <Font name="Bernard MT Condensed" size="28.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="dashboard_todaysbooking" layoutX="154.0" layoutY="11.0" text="0" textFill="WHITE">
+                                                <Label fx:id="dashboard_todaysbooking" layoutX="290.0" layoutY="13.0" text="0">
                                                    <font>
-                                                      <Font size="32.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane fx:id="top2pane" layoutX="293.0" layoutY="13.0" prefHeight="101.0" prefWidth="200.0" style="-fx-background-color: #5F0BD1;">
-                                             <children>
-                                                <ImageView fitHeight="51.0" fitWidth="54.0" layoutX="25.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../../../Users/ADMIN/Downloads/profit.png" />
-                                                   </image></ImageView>
-                                                <Label layoutX="83.0" layoutY="59.0" prefHeight="24.0" prefWidth="130.0" text="Today's Income" textFill="WHITE">
-                                                   <font>
-                                                      <Font name="Arial Rounded MT Bold" size="15.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="dashboard_todaysincome" layoutX="167.0" layoutY="10.0" text="0" textFill="WHITE">
-                                                   <font>
-                                                      <Font size="32.0" />
+                                                      <Font size="50.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -168,7 +150,7 @@
                                     </AnchorPane>
                                     <AnchorPane fx:id="avail_rightpane" layoutX="224.0" layoutY="15.0" prefHeight="542.0" prefWidth="321.0" style="-fx-background-color: e1cb07;" stylesheets="@../css/mainpage_style.css">
                                        <children>
-                                          <TableView fx:id="available_tableview" layoutX="3.0" layoutY="36.0" prefHeight="497.0" prefWidth="313.0">
+                                          <TableView fx:id="available_tableview" layoutX="3.0" layoutY="6.0" prefHeight="527.0" prefWidth="313.0">
                                             <columns>
                                               <TableColumn fx:id="avail_roomnum_col" prefWidth="56.0" text="Room#" />
                                               <TableColumn fx:id="avail_roomtype_col" prefWidth="107.0" text="Roomtype" />
@@ -176,27 +158,24 @@
                                                 <TableColumn fx:id="avail_roomprice_col" prefWidth="52.0" text="Price" />
                                             </columns>
                                           </TableView>
-                                          <TextField fx:id="avail_searchvbar" layoutX="3.0" layoutY="7.0" prefHeight="22.0" prefWidth="149.0" promptText="Search" />
                                        </children>
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="50.0" layoutY="14.0" prefHeight="570.0" prefWidth="559.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="customer_form" layoutX="50.0" layoutY="14.0" prefHeight="570.0" prefWidth="559.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <AnchorPane fx:id="customer_form" focusTraversable="true" layoutX="5.0" layoutY="15.0" prefHeight="549.0" prefWidth="546.0" style="-fx-background-color: #5F0BD1;" stylesheets="@../css/mainpage_style.css">
+                                    <AnchorPane focusTraversable="true" layoutX="5.0" layoutY="15.0" prefHeight="549.0" prefWidth="546.0" style="-fx-background-color: e1cb07;" stylesheets="@../css/mainpage_style.css">
                                        <children>
-                                          <TableView layoutX="7.0" layoutY="43.0" prefHeight="501.0" prefWidth="530.0">
+                                          <TableView fx:id="customer_tableview" layoutX="7.0" layoutY="10.0" prefHeight="534.0" prefWidth="530.0">
                                             <columns>
                                               <TableColumn fx:id="customernum_col" prefWidth="75.0" text="Customer#" />
-                                              <TableColumn fx:id="firstname_col" prefWidth="75.0" text="Firstname" />
-                                                <TableColumn fx:id="lastname_col" prefWidth="75.0" text="Lastname" />
-                                                <TableColumn fx:id="phonenum_col" prefWidth="75.0" text="Phone#" />
-                                                <TableColumn fx:id="totalpayment_col" prefWidth="89.0" text="Total Payment" />
-                                                <TableColumn fx:id="checkin_col" prefWidth="61.0" text="Check-In" />
-                                                <TableColumn fx:id="checkout_col" prefWidth="71.0" text="Check-out" />
+                                              <TableColumn fx:id="firstname_col" prefWidth="90.0" text="Firstname" />
+                                                <TableColumn fx:id="lastname_col" prefWidth="81.0" text="Lastname" />
+                                                <TableColumn fx:id="phonenum_col" prefWidth="78.0" text="Phone#" />
+                                                <TableColumn fx:id="checkin_col" prefWidth="93.0" text="Check-In" />
+                                                <TableColumn fx:id="checkout_col" prefWidth="112.0" text="Check-out" />
                                             </columns>
                                           </TableView>
-                                          <TextField fx:id="customer_searchbar" layoutX="9.0" layoutY="8.0" prefHeight="25.0" prefWidth="199.0" promptText="Search" />
                                        </children>
                                     </AnchorPane>
                                  </children>
