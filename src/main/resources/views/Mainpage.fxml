@@ -122,8 +122,11 @@
                                  <children>
                                     <AnchorPane fx:id="avail_leftform" layoutX="7.0" layoutY="14.0" prefHeight="544.0" prefWidth="207.0" style="-fx-background-color: e1cb07;" stylesheets="@../css/mainpage_style.css">
                                        <children>
-                                          <TextField fx:id="availroomnum_textfield" layoutX="87.0" layoutY="34.0" prefHeight="25.0" prefWidth="113.0" promptText="Room#" stylesheets="@../css/mainpage_style.css" />
-                                          <TextField fx:id="availprice_textfield" layoutX="87.0" layoutY="160.0" prefHeight="25.0" prefWidth="113.0" promptText="Price" />
+                                          <TextField fx:id="availroomnum_textfield" layoutX="87.0" layoutY="34.0" prefHeight="25.0" prefWidth="113.0" promptText="Room#" stylesheets="@../css/login.css">
+                                             <font>
+                                                <Font name="System Bold Italic" size="1.0" />
+                                             </font></TextField>
+                                          <TextField fx:id="availprice_textfield" layoutX="87.0" layoutY="160.0" prefHeight="25.0" prefWidth="113.0" promptText="Price" stylesheets="@../css/login.css" />
                                           <ComboBox fx:id="availroomtype_droptext" layoutX="88.0" layoutY="72.0" onAction="#availbaleRoomRoomtype" prefHeight="25.0" prefWidth="112.0" promptText="Choose" />
                                           <ComboBox fx:id="availroomstatus_droptext" layoutX="88.0" layoutY="115.0" prefHeight="25.0" prefWidth="112.0" promptText="Choose" />
                                           <Label layoutX="26.0" layoutY="38.0" text="Room#">

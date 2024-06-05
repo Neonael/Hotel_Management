@@ -63,3 +63,205 @@
                        -fx-background-color:#333;
 
                    }
+
+
+
+
+#usernameField {
+fx-padding: 5px;
+-fx-font-size: 13px;
+-fx-background-color: transparent;
+-fx-text-fill: #000000;
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+-fx-border-radius: 0;
+-fx-focus-color: black;
+-fx-faint-focus-color: transparent;
+
+}
+
+#usernameField:focused {
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+}
+
+
+
+#passwordLoginField {
+fx-padding: 5px;
+-fx-font-size: 13px;
+-fx-background-color: transparent;
+-fx-text-fill: #000000;
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+-fx-border-radius: 0;
+-fx-focus-color: black;
+-fx-faint-focus-color: transparent;
+
+}
+
+#passwordLoginField:focused {
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+}
+
+
+
+#accountNameField {
+fx-padding: 5px;
+-fx-font-size: 13px;
+-fx-background-color: transparent;
+-fx-text-fill: #000000;
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+-fx-border-radius: 0;
+-fx-focus-color: black;
+-fx-faint-focus-color: transparent;
+
+}
+#accountNameField:focused {
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+}
+
+
+
+#PasswordField{
+fx-padding: 5px;
+-fx-font-size: 13px;
+-fx-background-color: transparent;
+-fx-text-fill: #000000;
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+-fx-border-radius: 0;
+-fx-focus-color: black;
+-fx-faint-focus-color: transparent;
+}
+
+
+  #PasswordField:focused {
+  -fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+}
+
+   #availroomnum_textfield{
+    fx-padding: 5px;
+-fx-font-size: 13px;
+-fx-background-color: transparent;
+-fx-text-fill: #000000;
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+-fx-border-radius: 0;
+-fx-focus-color: black;
+-fx-faint-focus-color: transparent;
+                                                  }
+  #availroomnum_textfield:focused {
+  -fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+                         }
+
+
+
+
+#availprice_textfield{
+fx-padding: 5px;
+-fx-font-size: 13px;
+-fx-background-color: transparent;
+-fx-text-fill: #000000;
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+-fx-border-radius: 0;
+-fx-focus-color: black;
+-fx-faint-focus-color: transparent;
+}
+#availprice_textfield:focused {
+-fx-border-color: transparent transparent #000000 transparent;
+-fx-border-width: 0 0 2px 0;
+}
+                            }
+
+
+
+
+
+
+#firstname{
+       -fx-padding: 5px;
+          -fx-font-size: 13px;
+          -fx-background-color: transparent;
+          -fx-text-fill: #000000;
+          -fx-border-color: transparent transparent #000000 transparent;
+          -fx-border-width: 0 0 2px 0;
+          -fx-border-radius: 0;
+          -fx-focus-color: black;
+          -fx-faint-focus-color: transparent;
+ }
+
+
+#firstname:focused {
+   -fx-border-color: transparent transparent #000000 transparent;
+       -fx-border-width: 0 0 2px 0;
+      }
+
+
+      #lastname{
+      -fx-padding: 5px;
+                -fx-font-size: 13px;
+                -fx-background-color: transparent;
+                -fx-text-fill: #000000;
+                -fx-border-color: transparent transparent #000000 transparent;
+                -fx-border-width: 0 0 2px 0;
+                -fx-border-radius: 0;
+                -fx-focus-color: black;
+                -fx-faint-focus-color: transparent;
+
+      }
+
+      #lastname:focused {
+         -fx-border-color: transparent transparent #000000 transparent;
+             -fx-border-width: 0 0 2px 0;
+            }
+
+            #phonenumber{
+             -fx-padding: 5px;
+                            -fx-font-size: 13px;
+                            -fx-background-color: transparent;
+                            -fx-text-fill: #000000;
+                            -fx-border-color: transparent transparent #000000 transparent;
+                            -fx-border-width: 0 0 2px 0;
+                            -fx-border-radius: 0;
+                            -fx-focus-color: black;
+                            -fx-faint-focus-color: transparent;
+
+
+
+            }
+
+             #phonenumber:focused {
+                     -fx-border-color: transparent transparent #000000 transparent;
+                         -fx-border-width: 0 0 2px 0;
+                        }
+
+              #emailaddress {
+               -fx-padding: 5px;
+                                          -fx-font-size: 13px;
+                                          -fx-background-color: transparent;
+                                          -fx-text-fill: #000000;
+                                          -fx-border-color: transparent transparent #000000 transparent;
+                                          -fx-border-width: 0 0 2px 0;
+                                          -fx-border-radius: 0;
+                                          -fx-focus-color: black;
+                                          -fx-faint-focus-color: transparent;
+
+
+              }
+
+              #emailaddress:focused {
+                                   -fx-border-color: transparent transparent #000000 transparent;
+                                       -fx-border-width: 0 0 2px 0;
+                                      }
+
+
+
+
+

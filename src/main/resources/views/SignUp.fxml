@@ -16,8 +16,8 @@
                <font>
                   <Font name="Berlin Sans FB Bold" size="27.0" />
                </font></Label>
-            <TextField fx:id="accountNameField" layoutX="212.0" layoutY="152.0" prefHeight="25.0" prefWidth="149.0" promptText="Username" />
-            <TextField fx:id="PasswordField" layoutX="212.0" layoutY="197.0" promptText="Password" />
+            <TextField fx:id="accountNameField" layoutX="212.0" layoutY="152.0" prefHeight="25.0" prefWidth="149.0" promptText="Username" stylesheets="@../css/login.css" />
+            <TextField fx:id="PasswordField" layoutX="212.0" layoutY="197.0" prefHeight="28.0" prefWidth="149.0" promptText="Password" stylesheets="@../css/login.css" />
             <Button fx:id="logout" layoutX="443.0" layoutY="363.0" mnemonicParsing="false" onAction="#gobacktoLoginForm" prefHeight="25.0" prefWidth="73.0" stylesheets="@../css/login.css" text="LOGOUT" />
             <Button fx:id="create" layoutX="194.0" layoutY="254.0" mnemonicParsing="false" onAction="#logtodatabase" prefHeight="44.0" prefWidth="160.0" stylesheets="@../css/login.css" text="CREATE ACCOUNT" />
             <AnchorPane layoutX="14.0" layoutY="-1.0" prefHeight="403.0" prefWidth="31.0" style="-fx-background-color: #000000;" />

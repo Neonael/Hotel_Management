@@ -71,7 +71,7 @@ public class MainpageController implements Initializable {
     public TableColumn <RoomData,String>avail_roomstatus_col;
     public TableColumn <RoomData,String> avail_roomprice_col;
 
-
+    public Label dashboard_todaysbooking;
 
     private Connection connection;
     private PreparedStatement prepare;
@@ -80,12 +80,52 @@ public class MainpageController implements Initializable {
 
 
 
+
+    private int count = 0;
+
+    public void DashboardBookings_today(){
+
+
+        String sql = "SELECT COUNT(roomNumber) FROM CUSTOMERS";
+
+        connection = dbConnector.getConnection();
+
+        count = 0;
+
+        try{
+            prepare = connection.prepareStatement(sql);
+            resultSet = prepare.executeQuery();
+
+            while (resultSet.next()){
+                count = resultSet.getInt("COUNT(roomNumber)");
+                System.out.println(count);
+            }
+
+
+        }catch (Exception e){e.printStackTrace();}
+
+
+
+    }
+
+    public void DashboardDisplayBooking_Today(){
+        DashboardBookings_today();
+
+        dashboard_todaysbooking.setText(String.valueOf(count));
+
+
+    }
+
+
+
+
+
     //THIS WILL HANDLE THE INSERTION OF VALUE ON AVAIALBE FORM
     public void AvaillabelroomsAdd() {
 
         connection = dbConnector.getConnection();
 
-        String sql = "INSERT INTO Available_room(roomNumber,room_Type,status,price) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Available_room( roomNumber,roomType,status,price) VALUES (?,?,?,?)";
 
         try {
 
@@ -96,7 +136,7 @@ public class MainpageController implements Initializable {
 
             Alert alert;
 
-            if (roomNumber == null || type== null|| status== null  || price.isEmpty()) {
+            if (roomNumber == null || type== null|| status== null  || price == null) {
 
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
@@ -167,7 +207,7 @@ public class MainpageController implements Initializable {
 
         ObservableList<RoomData> listdata = FXCollections.observableArrayList();
 
-        String sql = "SELECT * FROM AVAILABLE_ROOM";
+        String sql = "SELECT roomNumber , roomType , status , price FROM Available_room";
 
         connection = dbConnector.getConnection();
 
@@ -175,14 +215,13 @@ public class MainpageController implements Initializable {
          RoomData roomD;
 
             prepare = connection.prepareStatement(sql);
-         resultSet = prepare.executeQuery();
+            resultSet = prepare.executeQuery();
 
 
             while (resultSet.next()) {
                 roomD = new RoomData(
-
-                        resultSet.getInt("roomNumber"),
-                        resultSet.getString("room_type"),
+                        resultSet.getString("roomNumber"),
+                        resultSet.getString("roomType"),
                         resultSet.getString("status"),
                         resultSet.getInt("price")
                 );
@@ -329,7 +368,7 @@ public class MainpageController implements Initializable {
     public  ObservableList <customersdata> customerListData(){
         ObservableList<customersdata>listData = FXCollections.observableArrayList();
 
-        String sql = "SELECT customer_id, firstname, lastname, phoneNumber, CheckIn, CheckOut FROM Customers ";
+        String sql = "SELECT customer_id, firstname, lastname, phoneNumber, checkIn, checkOut FROM Customers ";
 
         connection = dbConnector.getConnection();
 
@@ -350,7 +389,6 @@ public class MainpageController implements Initializable {
 
                 listData.add(custD);
             }
-
 
 
         }catch (Exception e){e.printStackTrace();}
@@ -374,6 +412,8 @@ public class MainpageController implements Initializable {
             availablerooms_form.setVisible(false);
             customer_form.setVisible(false);
 
+            DashboardDisplayBooking_Today();
+
             //availablerooms FORM WILL SHOW
         }else if(event.getSource() == but_avail){
             dashboard_form.setVisible(false);
@@ -388,23 +428,23 @@ public class MainpageController implements Initializable {
             // TO UPDATE THE CUSTOMERS TABLE WHEN INPUTED!
             customerShowData();
 
-
         }
 
 
     }
 
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        DashboardDisplayBooking_Today();
+
+
         availbaleRoomRoomtype();
         availableRoomStatus();
 
         // Initialize TableView and TableColumn
         avail_roomnum_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-        avail_roomtype_col.setCellValueFactory(new PropertyValueFactory<>("room_type"));
+        avail_roomtype_col.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         avail_roomstatus_col.setCellValueFactory(new PropertyValueFactory<>("status"));
         avail_roomprice_col.setCellValueFactory(new PropertyValueFactory<>("price"));
 
@@ -414,7 +454,7 @@ public class MainpageController implements Initializable {
         customernum_col.setCellValueFactory(new PropertyValueFactory<>("CustomerNum"));
         firstname_col.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         lastname_col.setCellValueFactory(new PropertyValueFactory<>("lastname"));
-        phonenum_col.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
+        phonenum_col.setCellValueFactory(new PropertyValueFactory<>("phoneNum"));
         checkin_col.setCellValueFactory(new PropertyValueFactory<>("CheckIn"));
         checkout_col.setCellValueFactory(new PropertyValueFactory<>("CheckOut"));
 
